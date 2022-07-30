@@ -8,6 +8,10 @@ public partial class MonkeysViewModel : BaseViewModel
     IConnectivity connectivity;
     IGeolocation geolocation;
     IMap map;
+
+    [ObservableProperty]
+    bool isRefreshing;
+
     public ObservableCollection<Monkey> Monkeys { get; } = new();
 
     public MonkeysViewModel(MonkeyService monkeyService, IConnectivity connectivity, IGeolocation geolocation, IMap map)
@@ -107,6 +111,7 @@ public partial class MonkeysViewModel : BaseViewModel
         finally
         {
             IsBusy = false;
+            IsRefreshing = false;
         }
     }
 }
